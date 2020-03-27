@@ -13,21 +13,31 @@ import "@shopify/polaris/styles.css";
 
 const parsed = queryString.parse(window.location.search);
 const shopOrigin = parsed.shop as string;
+const code = parsed.code as string;
 
 // Assign constants
-const SHOPIFY_API_KEY = "8c4f9df76d2c788625df3830b69378e0";
+const SHOPIFY_API_KEY = "b566925671674819211bf48eee130f55";
 
-// Install app flow
 const setup = () => {
-  if (window.top === window.self) {
+  // If authorized app, It redirects to app page
+  if (code) {
     const redirectUri = `https://${shopOrigin}/admin/apps/app-bridge-sampler`;
-    const permissionUrl = `/oauth/authorize?client_id=${SHOPIFY_API_KEY}&scope=write_script_tags&redirect_uri=${redirectUri}`;
 
-    window.location.assign(`https://${shopOrigin}/admin${permissionUrl}`);
-
+    window.location.assign(redirectUri);
     return;
   }
 
+  // Install app flow
+  if (window.top === window.self) {
+    const redirectUri = `https://app-bridge-sampler.firebaseapp.com`;
+
+    // This scope is dummy. We don't use it.
+    const scope = "read_products";
+    const permissionUrl = `/oauth/authorize?client_id=${SHOPIFY_API_KEY}&scope=${scope}&redirect_uri=${redirectUri}`;
+
+    window.location.assign(`https://${shopOrigin}/admin${permissionUrl}`);
+    return;
+  }
   const config = { apiKey: SHOPIFY_API_KEY, shopOrigin };
   const app = createApp(config);
 
