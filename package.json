@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@shopify/app-bridge": "^1.19.0",
-    "@shopify/app-bridge-react": "^1.19.0",
+    "@shopify/app-bridge-react": "^1.24.0",
     "@shopify/polaris": "^4.16.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
