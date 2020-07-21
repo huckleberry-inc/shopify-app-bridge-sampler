@@ -1,7 +1,14 @@
 {
   "name": "shopify-app-bridge-sampler",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.1",
+  "description": "Sampler of Shopify App Bridge",
+  "author": "Huckleberry, inc. <dev@huckleberry-inc.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/huckleberry-inc/shopify-app-bridge-sampler",
+  "bugs": {
+    "url": "https://github.com/huckleberry-inc/shopify-app-bridge-sampler/issues"
+  },
+  "repository": "https://github.com/huckleberry-inc/shopify-app-bridge-sampler.git",
   "dependencies": {
     "@shopify/app-bridge": "^1.19.0",
     "@shopify/app-bridge-react": "^1.24.0",
