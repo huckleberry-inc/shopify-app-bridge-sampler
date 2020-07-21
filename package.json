@@ -39,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/testing-library__jest-dom": "^5.9.1",
+    "@types/testing-library__react": "^10.2.0"
   }
 }

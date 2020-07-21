@@ -5,7 +5,6 @@ import translations from "@shopify/polaris/locales/en.json";
 import { Provider } from "@shopify/app-bridge-react";
 import createApp from "@shopify/app-bridge";
 import { AppProvider } from "@shopify/polaris";
-
 import { App } from "./App";
 import * as serviceWorker from "./serviceWorker";
 
