@@ -15,7 +15,7 @@ const shopOrigin = parsed.shop as string;
 const code = parsed.code as string;
 
 // Assign constants
-const SHOPIFY_API_KEY = "b566925671674819211bf48eee130f55";
+const SHOPIFY_API_KEY = "YOUR_SHOPIFY_API_KEY";
 
 const setup = () => {
   // If authorized app, It redirects to app page
