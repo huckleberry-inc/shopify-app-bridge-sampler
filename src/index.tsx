@@ -8,7 +8,7 @@ import { AppProvider } from "@shopify/polaris";
 import { App } from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-import "@shopify/polaris/styles.css";
+import "@shopify/polaris/dist/styles.css";
 
 const parsed = queryString.parse(window.location.search);
 const shopOrigin = parsed.shop as string;
