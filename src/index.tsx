@@ -5,18 +5,17 @@ import translations from "@shopify/polaris/locales/en.json";
 import { Provider } from "@shopify/app-bridge-react";
 import createApp from "@shopify/app-bridge";
 import { AppProvider } from "@shopify/polaris";
-
 import { App } from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-import "@shopify/polaris/styles.css";
+import "@shopify/polaris/dist/styles.css";
 
 const parsed = queryString.parse(window.location.search);
 const shopOrigin = parsed.shop as string;
 const code = parsed.code as string;
 
 // Assign constants
-const SHOPIFY_API_KEY = "b566925671674819211bf48eee130f55";
+const SHOPIFY_API_KEY = "YOUR_SHOPIFY_API_KEY";
 
 const setup = () => {
   // If authorized app, It redirects to app page

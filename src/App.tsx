@@ -8,15 +8,15 @@ import {
   ResourcePicker,
   Loading,
   Modal,
-  Toast
+  Toast,
 } from "@shopify/app-bridge/actions";
 
 export const App: React.FC<{ app: ClientApplication<unknown> }> = ({ app }) => {
   // TitleBar
   const updateTitleBar = () => {
-     const titleBarOptions = {
-       title: "App Bridge Sampler"
-     };
+    const titleBarOptions = {
+      title: "App Bridge Sampler",
+    };
     TitleBar.create(app, titleBarOptions);
   };
 
@@ -24,12 +24,12 @@ export const App: React.FC<{ app: ClientApplication<unknown> }> = ({ app }) => {
   const options = {
     saveAction: {
       disabled: false,
-      loading: false
+      loading: false,
     },
     discardAction: {
       disabled: false,
-      loading: false
-    }
+      loading: false,
+    },
   };
   const contextualSaveBar = ContextualSaveBar.create(app, options);
 
@@ -49,21 +49,21 @@ export const App: React.FC<{ app: ClientApplication<unknown> }> = ({ app }) => {
 
   // ResourcePicker
   const productPicker = ResourcePicker.create(app, {
-    resourceType: ResourcePicker.ResourceType.Product
+    resourceType: ResourcePicker.ResourceType.Product,
   });
   const openProductPicker = () => {
     productPicker.dispatch(ResourcePicker.Action.OPEN);
   };
 
   const productVariantPicker = ResourcePicker.create(app, {
-    resourceType: ResourcePicker.ResourceType.ProductVariant
+    resourceType: ResourcePicker.ResourceType.ProductVariant,
   });
   const openProductVariantPicker = () => {
     productVariantPicker.dispatch(ResourcePicker.Action.OPEN);
   };
 
   const collectionPicker = ResourcePicker.create(app, {
-    resourceType: ResourcePicker.ResourceType.Collection
+    resourceType: ResourcePicker.ResourceType.Collection,
   });
   const openCollectionPicker = () => {
     collectionPicker.dispatch(ResourcePicker.Action.OPEN);
@@ -71,7 +71,7 @@ export const App: React.FC<{ app: ClientApplication<unknown> }> = ({ app }) => {
 
   // Features
   const showFeatures = () => {
-    app.featuresAvailable().then(state => {
+    app.featuresAvailable().then((state) => {
       console.log(state);
     });
   };
@@ -89,7 +89,7 @@ export const App: React.FC<{ app: ClientApplication<unknown> }> = ({ app }) => {
 
   // Modal
   const modalOptions = {
-    title: 'Title',
+    title: "Title",
     message: "Message",
   };
   const modal = Modal.create(app, modalOptions);
@@ -103,12 +103,12 @@ export const App: React.FC<{ app: ClientApplication<unknown> }> = ({ app }) => {
   // Toast
   const toastOptions = {
     message: "Message",
-    duration: 5000
+    duration: 5000,
   };
   const toast = Toast.create(app, toastOptions);
   const showToast = () => {
     toast.dispatch(Toast.Action.SHOW);
-  }
+  };
 
   return (
     <Page narrowWidth title="App Bridge Sampler">
@@ -132,7 +132,7 @@ export const App: React.FC<{ app: ClientApplication<unknown> }> = ({ app }) => {
         <Button onClick={openProductVariantPicker} primary>
           Open (for variant)
         </Button>
- 
+
         <Button onClick={openCollectionPicker} primary>
           Open (for collection)
         </Button>
