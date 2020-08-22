@@ -3,19 +3,38 @@ import { ClientApplication } from "@shopify/app-bridge";
 import { Page, Card, Button } from "@shopify/polaris";
 
 import {
+  Button as ActionButton,
+  ButtonGroup,
   TitleBar,
   ContextualSaveBar,
   ResourcePicker,
   Loading,
   Modal,
   Toast,
+  Fullscreen,
+  Flash,
+  NavigationMenu,
+  ChannelMenu,
+  AppLink,
 } from "@shopify/app-bridge/actions";
 
 export const App: React.FC<{ app: ClientApplication<unknown> }> = ({ app }) => {
-  // TitleBar
+  // TitleBar, Button and ButtonGroup
+  const saveButton = ActionButton.create(app, { label: "Save" });
+  const button1 = ActionButton.create(app, { label: "Settings" });
+  const button2 = ActionButton.create(app, { label: "Help" });
+  const buttonGroupOptions = {
+    label: "More actions",
+    buttons: [button1, button2],
+  };
+  const buttonGroup = ButtonGroup.create(app, buttonGroupOptions);
   const updateTitleBar = () => {
     const titleBarOptions = {
       title: "App Bridge Sampler",
+      buttons: {
+        primary: saveButton,
+        secondary: [buttonGroup],
+      },
     };
     TitleBar.create(app, titleBarOptions);
   };
@@ -110,9 +129,38 @@ export const App: React.FC<{ app: ClientApplication<unknown> }> = ({ app }) => {
     toast.dispatch(Toast.Action.SHOW);
   };
 
+  // Flash
+  const flashOptions = {
+    message: "Message",
+    duration: 5000,
+  };
+  const flash = Flash.create(app, flashOptions);
+  const showFlash = () => {
+    flash.dispatch(Flash.Action.SHOW);
+  };
+
+  // Fullscreen
+  const fullscreen = Fullscreen.create(app);
+  const showFullscreen = () => {
+    fullscreen.dispatch(Fullscreen.Action.ENTER);
+  };
+
+  // NavigationMenu
+  const appLink = AppLink.create(app, { label: "", destination: "" });
+  const navigationMenu = NavigationMenu.create(app, { items: [appLink] });
+  const showNavigationMenu = () => {
+    navigationMenu.dispatch(NavigationMenu.Action.UPDATE);
+  };
+
+  // ChannelMenu
+  const channelMenu = ChannelMenu.create(app, { items: [appLink] });
+  const showChannelMenu = () => {
+    channelMenu.dispatch(ChannelMenu.Action.UPDATE);
+  };
+
   return (
     <Page narrowWidth title="App Bridge Sampler">
-      <Card title="TitleBar" sectioned>
+      <Card title="TitleBar, Button and ButtonGroup" sectioned>
         <Button onClick={updateTitleBar} primary>
           Update
         </Button>
@@ -162,6 +210,30 @@ export const App: React.FC<{ app: ClientApplication<unknown> }> = ({ app }) => {
 
       <Card title="Toast" sectioned>
         <Button onClick={showToast} primary>
+          Show
+        </Button>
+      </Card>
+
+      <Card title="Flash (Alias of Toast)" sectioned>
+        <Button onClick={showFlash} primary>
+          Show
+        </Button>
+      </Card>
+
+      <Card title="Fullscreen (Permission Error)" sectioned>
+        <Button onClick={showFullscreen} primary>
+          Show
+        </Button>
+      </Card>
+
+      <Card title="NavigationMenu (Permission Error)" sectioned>
+        <Button onClick={showNavigationMenu} primary>
+          Show
+        </Button>
+      </Card>
+
+      <Card title="ChannelMenu (Permission Error)" sectioned>
+        <Button onClick={showChannelMenu} primary>
           Show
         </Button>
       </Card>

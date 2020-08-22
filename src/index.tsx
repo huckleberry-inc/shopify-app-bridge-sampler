@@ -7,15 +7,13 @@ import createApp from "@shopify/app-bridge";
 import { AppProvider } from "@shopify/polaris";
 import { App } from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { SHOPIFY_API_KEY } from "./constants.json";
 
 import "@shopify/polaris/dist/styles.css";
 
 const parsed = queryString.parse(window.location.search);
 const shopOrigin = parsed.shop as string;
 const code = parsed.code as string;
-
-// Assign constants
-const SHOPIFY_API_KEY = "YOUR_SHOPIFY_API_KEY";
 
 const setup = () => {
   // If authorized app, It redirects to app page
